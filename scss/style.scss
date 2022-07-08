@@ -259,8 +259,12 @@ nav {
 .slider {
   padding: 100px 0;
   .swiper {
-    width: 600px;
-    height: 300px;
+    width: 80vw;
+    height: 500px;
+
+    &-slide {
+      width: 90%;
+    }
 
     &-pagination {
       &-bullet {
@@ -268,6 +272,10 @@ nav {
         height: 10px;
       }
     }
+
+    // &-wrapper {
+    //   width: 100vw;
+    // }
   }
 
   .reviews {
@@ -277,7 +285,8 @@ nav {
     margin: 20px auto;
     gap: 50px;
     color: white;
-    width: 70%;
+    width: 85%;
+    // height: 100%;
     padding: 60px 50px;
 
     &__header {
@@ -305,14 +314,19 @@ nav {
         gap: 25px;
 
         .profile-name {
-          @include textStyling(22px, 700, 48px);
+          @include textStyling(22px, 700, 32px);
+        }
+
+        .profile-text {
+          @include displayFlex(column, space-between, flex-start);
+          gap: 10px;
         }
       }
 
       p {
         @include textStyling(19px, 400, 30px);
         color: white;
-        width: 400px;
+        max-width: 400px;
       }
     }
   }

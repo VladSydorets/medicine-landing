@@ -47,12 +47,20 @@
   }
 
   .slider {
-    .reviews {
-      width: 90%;
+    .swiper {
+      width: 95vw;
+    }
 
-      .review__profile {
-        .profile-name {
-          line-height: 30px;
+    .reviews {
+      // width: 90%;
+
+      .review {
+        gap: 20px;
+
+        &__profile {
+          .profile-name {
+            line-height: 30px;
+          }
         }
       }
     }
@@ -130,11 +138,26 @@
   }
 
   .slider {
-    text-align: center;
+    // text-align: center;
     .reviews {
+      gap: 30px;
+      height: fit-content;
+      padding: 40px;
+      // margin-bottom: 50px;
+      // width: ;
+
+      &__header {
+        h2 {
+          font-size: 32px;
+        }
+      }
       .review {
-        flex-direction: column;
+        // flex-direction: column;
         gap: 30px;
+
+        p {
+          font-size: 15px;
+        }
       }
     }
   }
@@ -176,6 +199,21 @@
       }
     }
   }
+
+  .slider {
+    .reviews {
+      .review {
+        &__profile {
+          text-align: center;
+          flex-direction: column;
+
+          .profile-text {
+            align-items: center;
+          }
+        }
+      }
+    }
+  }
 }
 
 @media (max-width: 600px) {
@@ -194,7 +232,17 @@
   }
 
   .slider {
+    .swiper {
+      height: 600px;
+
+      &-pagination {
+        margin-bottom: 100px;
+      }
+    }
+
     .reviews {
+      width: 100%;
+
       &__header {
         h2 {
           font-size: 32px;
@@ -203,6 +251,27 @@
 
       .review p {
         font-size: 16px;
+      }
+    }
+  }
+}
+
+@media (max-width: 475px) {
+  .slider {
+    .reviews {
+      .review {
+        p {
+          font-size: 14px;
+
+          span {
+            display: none;
+          }
+        }
+      }
+    }
+    .swiper {
+      &-pagination {
+        margin-bottom: 50px;
       }
     }
   }
