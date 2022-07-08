@@ -1,0 +1,482 @@
+@import "config";
+@import "mixins";
+
+header {
+  height: 100vh;
+  width: 80%;
+  padding: 50px 0;
+  margin: 0 auto;
+}
+
+header {
+  nav {
+    .nav-open {
+      height: 100%;
+      width: 100%;
+      background-color: $blue-main-color;
+      left: 0px;
+      top: 0px;
+      z-index: 1;
+      @include displayFlex(column, center, center);
+      transition: 0.5s ease-in-out;
+
+      a,
+      a:first-child {
+        color: white;
+        font-weight: 300;
+        transition: 0.3s ease-in;
+
+        &:hover {
+          color: $navbar-grey-color;
+        }
+      }
+    }
+  }
+}
+
+.hamburger-menu {
+  cursor: pointer;
+  position: relative;
+  display: none;
+  width: 30px;
+  height: 30px;
+  transition: 0.5s ease-in-out;
+  z-index: 2;
+
+  &.open .line {
+    background: transparent;
+  }
+
+  &.open .line::before {
+    transform: rotate(45deg);
+    background-color: white;
+  }
+
+  &.open .line::after {
+    transform: rotate(-45deg);
+    background-color: white;
+  }
+
+  .line {
+    width: 30px;
+    height: 3px;
+    background-color: $blue-main-color;
+    border-radius: 5px;
+    transition: 0.3s ease-in-out;
+  }
+
+  .line::before,
+  .line::after {
+    content: "";
+    position: absolute;
+    @extend .line;
+    transition: 0.5s ease-in-out;
+  }
+
+  .line::before {
+    transform: translateY(-11px);
+  }
+
+  .line::after {
+    transform: translateY(11px);
+  }
+}
+
+nav {
+  @include displayFlex(row, space-between, center);
+  width: 90%;
+  margin: 0 auto;
+  padding-bottom: 50px;
+
+  .logo {
+    @include displayFlex(row, center, center);
+    gap: 12px;
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    &__letter {
+      width: 41px;
+      height: 41px;
+      color: white;
+      border-radius: 50%;
+      background-color: $blue-main-color;
+      @include displayFlex(row, center, center);
+      @include textStyling(26px, 600);
+    }
+
+    &__text {
+      @include textStyling(24px, 600);
+      color: $logo-text-color;
+    }
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 40px;
+    transition: 0.55s ease-in-out;
+
+    a:nth-child(1) {
+      color: $navbar-grey-color;
+      font-weight: 600;
+    }
+
+    a {
+      @include textStyling(18px, 300);
+      color: $paragraph-grey-color;
+
+      &:hover {
+        color: darken($paragraph-grey-color, 35%);
+      }
+    }
+  }
+}
+
+.hero {
+  @include displayFlex(row, center, center);
+  margin: 0 auto;
+  gap: 100px;
+  padding-top: 60px;
+
+  &__text {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    max-width: 445px;
+    width: 40%;
+
+    h1 {
+      @include textStyling(48px, 700, 56px);
+    }
+
+    p {
+      @include textStyling(21px, 300, 32px);
+    }
+
+    a {
+      text-align: center;
+      width: 200px;
+      @include textStyling(18px, 700, 60px);
+      color: white;
+      background-color: $blue-main-color;
+      padding: 0 40px;
+      border-radius: 55px;
+      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+      transition: 0.3s ease-in;
+
+      &:hover {
+        background-color: darken($blue-main-color, 15%);
+      }
+    }
+  }
+
+  &__img {
+    max-width: 593px;
+    min-width: 350px;
+    width: 55%;
+    img {
+      width: 100%;
+    }
+  }
+}
+
+.services {
+  @include displayFlex(column, center, center);
+  padding-top: 60px;
+  gap: 30px;
+
+  &__header {
+    max-width: 60vw;
+    width: 80%;
+    @include displayFlex(column, center, center);
+    gap: 25px;
+    text-align: center;
+
+    p {
+      @include textStyling(18px, 300, 30px);
+    }
+  }
+
+  .tiles__wrapper {
+    width: 85%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+
+    .tile__element {
+      @include displayFlex(column, space-around, center);
+      box-shadow: 10px 40px 50px rgba(229, 233, 246, 0.4);
+      border-radius: 20px;
+      width: 350px;
+      height: 350px;
+      padding: 40px 35px;
+      text-align: center;
+
+      h3 {
+        @include textStyling(24px, 700, 56px);
+      }
+
+      p {
+        @include textStyling(16px, 300, 28px);
+      }
+
+      img {
+        width: 70px;
+      }
+    }
+  }
+}
+
+.info {
+  padding: 100px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 100px;
+  margin: 0 auto;
+  width: 80%;
+
+  &__text {
+    padding: 30px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    width: 35%;
+  }
+
+  &__img {
+    max-width: 650px;
+    min-width: 200px;
+    width: 60%;
+    img {
+      width: 100%;
+    }
+  }
+}
+
+.slider {
+  padding: 100px 0;
+  .swiper {
+    width: 600px;
+    height: 300px;
+
+    &-pagination {
+      &-bullet {
+        width: 10px;
+        height: 10px;
+      }
+    }
+  }
+
+  .reviews {
+    @include displayFlex(column, center, center);
+    background-color: $blue-main-color;
+    border-radius: 50px;
+    margin: 20px auto;
+    gap: 50px;
+    color: white;
+    width: 70%;
+    padding: 60px 50px;
+
+    &__header {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      align-items: center;
+
+      h2 {
+        @include textStyling(36px, 700, 48px);
+      }
+
+      .hr-line {
+        background-color: white;
+      }
+    }
+
+    .review {
+      @include displayFlex(row, center, center);
+      gap: 100px;
+
+      &__profile {
+        display: flex;
+        align-items: center;
+        gap: 25px;
+
+        .profile-name {
+          @include textStyling(22px, 700, 48px);
+        }
+      }
+
+      p {
+        @include textStyling(19px, 400, 30px);
+        color: white;
+        width: 400px;
+      }
+    }
+  }
+
+  .control-btns {
+    .bullets {
+      display: flex;
+      gap: 10px;
+    }
+    @include displayFlex(row, center, center);
+    gap: 40px;
+    margin: 40px 0;
+  }
+}
+
+.ideas {
+  @include displayFlex(column, center, center);
+  margin: 0 auto;
+  padding: 50px 0;
+  width: 80%;
+  gap: 20px;
+
+  .btn a {
+    @include textStyling(18px, 700);
+    margin: 30px 0 50px 0;
+
+    &:hover {
+      color: white;
+    }
+  }
+
+  h4 {
+    @include textStyling(21px, 700, 32px);
+  }
+
+  p {
+    @include textStyling(16px, 300, 28px);
+  }
+
+  a {
+    @include textStyling(17px, 600, 28px);
+    @include displayFlex(row, flex-start, center);
+    color: $blue-main-color;
+
+    gap: 15px;
+    transition: 0.4s ease-in-out;
+
+    &:hover {
+      color: darken($blue-main-color, 20%);
+    }
+
+    img {
+      width: 17px;
+    }
+  }
+
+  &__header {
+    @include displayFlex(column, center, center);
+    gap: 20px;
+    padding-bottom: 20px;
+  }
+
+  &__tiles {
+    display: flex;
+    gap: 10px;
+
+    .tile {
+      @include displayFlex(column, flex-start, space-around);
+      gap: 30px;
+      box-shadow: 10px 40px 50px rgba(229, 233, 246, 0.4);
+      border-radius: 20px;
+
+      &__text {
+        display: flex;
+        flex-direction: column;
+        padding: 20px 50px;
+        gap: 10px;
+      }
+    }
+  }
+
+  .img-mask {
+    width: 100%;
+    height: 50%;
+    display: flex;
+    justify-content: center;
+  }
+
+  img {
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    height: 100%;
+  }
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 80px 200px;
+  background-color: $blue-main-color;
+  color: white;
+
+  &__left {
+    display: flex;
+    flex-direction: column;
+    width: 30vw;
+    gap: 25px;
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+
+      &__letter {
+        @include displayFlex(row, center, center);
+        @include textStyling(26px, 600);
+        width: 41px;
+        height: 41px;
+        color: $blue-main-color;
+        border-radius: 50%;
+        background-color: white;
+      }
+
+      &__text {
+        @include textStyling(24px, 600);
+        color: white;
+      }
+    }
+
+    p {
+      color: white;
+      @include textStyling(18px, 300, 28px);
+    }
+
+    #signature {
+      @include textStyling(16px, 300, 28px);
+    }
+  }
+
+  &__links {
+    display: flex;
+    justify-content: space-between;
+
+    .link {
+      display: flex;
+      flex-direction: column;
+      padding: 0 20px;
+
+      h4 {
+        @include textStyling(20px, 700, 60px);
+      }
+
+      a {
+        @include textStyling(18px, 300, 38px);
+        color: white;
+        transition: 0.4s ease-in;
+
+        &:hover {
+          color: darken(white, 15%);
+        }
+      }
+    }
+  }
+}
+
+// Import media queries
+@import "mobile";
